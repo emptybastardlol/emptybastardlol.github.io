@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="icons/icon-help-main.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <link href="normalize.min.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <title>Help</title>
+
+    <script>
+      function menuActive() {
+        const menuItems = document.querySelectorAll("#menu button");
+        const content = document.getElementById("content");
+        const menu = document.getElementById("menu");
+
+        menu.addEventListener("click", async (item) => {
+          if (item.target.nodeName !== "BUTTON") return;
+
+          content.innerHTML = await (await fetch(`/docs/${item.target.textContent.toLowerCase()}.html`)).text();
+
+          menuItems.forEach((b) => b.classList.remove("active"));
+          item.target.classList.add("active");
+
+          addCopyCode();
+        });
+      }
+
+      function addCopyCode() {
+        const codes = document.querySelectorAll("code");
+
+        codes.forEach((item) => {
+          if (item.querySelector(".copy")) return;
+          const copy = document.createElement("a");
+          copy.classList.add("copy");
+
+          copy.addEventListener("click", () => {
+            const text = item.textContent;
+            navigator.clipboard.writeText(text);
+          });
+
+          item.append(copy);
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => menuActive());
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a class="icon-help" aria-label="Home page" href="/"></a>
+        <nav id="menu">
+          <button>Git</button>
+          <button>Java</button>
+        </nav>
+        <a class="icon-github" aria-label="GitHub" href="https://github.com/emptybastardlol/emptybastardlol.github.io"></a>
+      </div>
+    </header>
+    <div id="content"></div>
+  </body>
+</html>

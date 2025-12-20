@@ -1,0 +1,274 @@
+:root {
+  --bg: #0e0d11;
+  --red: #9b0a2c;
+  --green: green;
+  --gray: #505971;
+  --white: #d7dff3;
+  --active: #850422;
+  --hover: #7b031f;
+  --outline-red: #450000;
+  --outline-dark-red: #29000a;
+  --code: #6999f3;
+  --dark-code: #3c588d;
+  --ul-marker: #9b0a2c;
+}
+
+*,
+*::before,
+*::after {
+  text-shadow: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-optical-sizing: auto;
+  font-variation-settings: "wdth" 100;
+  font-size: 12px;
+  text-shadow: 1px 1px 5px black;
+  scrollbar-gutter: stable both-edges;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  min-height: 100vh;
+  margin: 0;
+}
+
+header {
+  background-color: var(--bg);
+}
+
+header .container {
+  max-width: 950px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #1c1b22;
+}
+
+p {
+  margin: 0;
+}
+
+details,
+pre,
+var,
+small,
+code {
+  font-family: "Roboto Mono", monospace !important;
+  font-weight: 900 !important;
+}
+
+code,
+pre {
+  white-space: pre-wrap;
+  font-family: inherit;
+  letter-spacing: inherit;
+}
+
+code {
+  color: var(--code);
+}
+
+li > code ~ code {
+  padding-left: 8px;
+}
+
+pre {
+  font-size: 11px;
+  color: var(--dark-code);
+  margin: 7px 1px 9px 1px;
+  padding: 7px 11px 7px 11px;
+  border-radius: 15px;
+  background-color: #0b0f17;
+  outline: 1px solid #121622;
+}
+
+var {
+  color: var(--dark-code);
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+ul {
+  padding-left: 0;
+}
+
+ul ul {
+  padding-left: 15px;
+  margin-top: 5px;
+}
+
+ul li::marker {
+  content: "●  ";
+  color: var(--ul-marker);
+}
+
+ul ul li::marker {
+  content: "—  ";
+  color: var(--ul-marker);
+  font-weight: bold;
+}
+
+small {
+  display: block;
+  font-size: 11px;
+  color: var(--gray);
+  margin-top: 4px;
+}
+
+small,
+pre {
+  line-height: 1.4;
+}
+
+details pre {
+  display: block;
+}
+
+details small {
+  padding: 4px;
+}
+
+.copy {
+  display: inline-block;
+  vertical-align: middle;
+  width: 11px;
+  height: 11px;
+  padding: 0 15px 0 12px;
+  margin-bottom: 2px;
+  cursor: pointer;
+  user-select: none;
+  mask: url("icons/icon-copy.svg") no-repeat center;
+  -webkit-mask: url("icons/icon-copy.svg") no-repeat center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  background-color: #2b3766;
+  transition: background-color 0.2s;
+}
+
+.copy:hover {
+  background-color: #2954a4;
+}
+
+.copy:active {
+  background-color: var(--green);
+}
+
+button {
+  font-family: inherit;
+  line-height: inherit;
+  outline: 2px solid var(--outline-red);
+  color: var(--active);
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing: 1px;
+  background: none;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  margin: 4px;
+  padding: 4px 13px 3px 13px;
+  transition: outline 0.2s;
+}
+
+button:hover {
+  outline: 2px solid var(--hover);
+}
+
+button.active {
+  outline: 2px solid var(--hover);
+}
+
+h1 {
+  font-size: 18px;
+  margin: 0;
+  text-align: center;
+}
+
+.icon-help {
+  position: relative;
+  margin: 20px 0;
+  background: url("icons/icon-help.png") center/contain no-repeat;
+  padding: 30px;
+  margin: 10px;
+  cursor: pointer;
+  transition: filter 0.2s ease-in;
+}
+
+.icon-github {
+  position: relative;
+  background: url("icons/icon-github.png") center/contain no-repeat;
+  padding: 19px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+#menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin: 10px 0 10px 0;
+  padding: 0;
+}
+
+#content {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+details {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  width: max-content;
+  max-width: 880px;
+  border-radius: 5px 5px 12px 12px;
+  margin: 5px 1px 7px 1px;
+  padding: 4px 10px;
+  color: var(--dark-code);
+  outline: 1px solid #1a243e;
+  background-color: #080a0e;
+  overflow: hidden;
+}
+
+summary {
+  padding-top: 1px;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  padding-right: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+details summary::marker {
+  content: "";
+}
+
+details summary::before {
+  content: "🠞";
+  color: var(--dark-code);
+  display: inline-block;
+  margin-right: 4px;
+  transition: transform 0.2s;
+}
+
+details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+details details[open] {
+  width: auto;
+}
